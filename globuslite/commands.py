@@ -1,4 +1,4 @@
-from bfutils.globus import constants
+from globuslite import constants
 import subprocess
 import os
 

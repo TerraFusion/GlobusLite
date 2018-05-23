@@ -1,3 +1,4 @@
-from transfer import GlobusTransfer
-from commands import *
+from .transfer import *
+from .commands import *
+from . import constants
  
