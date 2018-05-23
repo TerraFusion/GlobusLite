@@ -9,7 +9,7 @@ import uuid
 __author__ = 'Landon T. Clipp'
 __email__  = 'clipp2@illinois.edu'
 
-class GlobusTransfer:
+class Transfer:
     '''
     This class acts as a wrapper utility around the Globus Python CLI.
     This class interacts with the CLI via subprocesses.
