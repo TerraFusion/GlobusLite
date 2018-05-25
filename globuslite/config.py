@@ -2,6 +2,7 @@ import yaml
 from configobj import ConfigObj
 from globuslite import version
 import os
+import globus_sdk
 
 CONFIG_FILE = '~/.globuslite.ini'
 CONFIG_PATH = os.path.expanduser( CONFIG_FILE )
