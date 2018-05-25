@@ -12,6 +12,8 @@ SCOPES = ('openid profile email',
     'urn:globus:auth:scope:auth.globus.org:view_identity_set',
     'urn:globus:auth:scope:transfer.api.globus.org:all')
 
+__all__ = ['login']
+
 def exchange_code_and_store_config( native_client, auth_code ):
     tkn = native_client.oauth2_exchange_code_for_tokens( auth_code )
     tkn = tkn.by_resource_server
@@ -62,4 +64,6 @@ def do_link_login_flow():
 
     exchange_code_and_store_config( client, auth_code )
 
+def login( *args, **kwargs ):
+    do_link_login_flow( *args, **kwargs )
 
