@@ -1,3 +1,8 @@
+"""
+The methods in this file handle building various authorization objets
+and other various operations related to authorization.
+"""
+
 import re
 from globus_sdk import AuthClient, RefreshTokenAuthorizer
 from globuslite.config import (set_auth_access_token, get_auth_tokens,
