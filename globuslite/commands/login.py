@@ -48,6 +48,9 @@ def exchange_code_and_store_config( native_client, auth_code ):
     write_option(AUTH_AT_EXPIRES_OPTNAME, auth_at_expires)
 
 def do_link_login_flow():
+    """
+    Prompt the user to visit a URL to retrieve an access code.
+    """
 
     client = globus_sdk.NativeAppAuthClient( CLIENT_ID )
     label = platform.node()
@@ -65,5 +68,9 @@ def do_link_login_flow():
     exchange_code_and_store_config( client, auth_code )
 
 def login( *args, **kwargs ):
+    """
+    Log into Globus services to authorize this application.
+    """
+
     do_link_login_flow( *args, **kwargs )
 

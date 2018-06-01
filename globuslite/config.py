@@ -1,3 +1,8 @@
+"""
+The methods in this file handle interacting with the configuration 
+file which stores information like authorization tokens.
+"""
+
 import yaml
 from configobj import ConfigObj
 from globuslite import version

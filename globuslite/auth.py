@@ -1,3 +1,8 @@
+"""
+The methods in this file handle building various authorization objets
+and other various operations related to authorization.
+"""
+
 import re
 from globus_sdk import AuthClient, RefreshTokenAuthorizer
 from globuslite.config import (set_auth_access_token, get_auth_tokens,
@@ -35,6 +40,10 @@ def _update_access_tokens( token_response ):
                            tokens['expires_at_seconds'])
 
 def get_refresh_authorizer( tokens ):
+    """
+    Retrieve a refresh token authorizer from the configuration file.
+    """
+
     authorizer = None
 
     if tokens['refresh_token'] is not None:
@@ -42,11 +51,16 @@ def get_refresh_authorizer( tokens ):
             tokens['refresh_token'], internal_auth_client(),
             tokens['access_token'], int(tokens['access_token_expires']),
             on_refresh=_update_access_tokens)
-
+    else:
+        raise RuntimeError('No refresh token found. Please login first.')
    
     return authorizer
 
 def get_auth_client():
+    """
+    Retrieve an authorization client.
+    """
+
     authorizer = get_refresh_authorizer()
     client = AuthClient( authorizer = authorizer, app_name=app_name )
     

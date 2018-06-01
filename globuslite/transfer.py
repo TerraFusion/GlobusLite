@@ -1,3 +1,8 @@
+"""
+This module handles building transfer client objects and also contains
+classes for submitting transfer tasks.
+"""
+
 from globuslite import auth
 from globus_sdk import TransferClient, TransferData
 from globuslite.config import get_transfer_tokens
@@ -14,9 +19,7 @@ class Transfer:
         self.source_id = auth.verify_uuid( source_id )
         self.dest_id = auth.verify_uuid( dest_id )
 
-        # Perform authorization work
-        authorizer = auth.get_refresh_authorizer( get_transfer_tokens() )
-        self.transfer_client = TransferClient(authorizer=authorizer)
+        self.transfer_client = get_transfer_client()
 
         self.transfer_data = TransferData( self.transfer_client,
             source_id, dest_id, label=label, sync_level=sync_level)
@@ -25,6 +28,11 @@ class Transfer:
         self.transfer_data.add_item( src_path, dst_path,
             recursive=recursive )
 
-    def submit( self ):
-        self.transfer_client.submit_transfer( self.transfer_data )
+    def submit( self, **kwargs ):
+        self.transfer_client.submit_transfer( self.transfer_data, **kwargs )
 
+
+def get_transfer_client():
+    authorizer = auth.get_refresh_authorizer( get_transfer_tokens() )
+    return TransferClient(authorizer=authorizer)
+    
