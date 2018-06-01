@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 setup(
     name='globuslite',
-    version='0.2.0',
+    version='0.2.1',
     author='Landon T. Clipp',
     author_email='clipp2@illinois.edu',
     packages=['globuslite'],
@@ -13,7 +13,7 @@ setup(
     package abstracts that away from users and manages authorization \
     tokens automatically. It also provides a simple way to submit transfer \
     tasks to Globus.',
-    install_requires=[ 'configobj' ],
+    install_requires=[ 'configobj', 'pyyaml'],
     url='https://github.com/TerraFusion/globuslite',
     keywords = ['globus', 'sdk', 'api', 'data', 'transfer', 'lite',
         'lightweight', 'light', 'globuslite'],
