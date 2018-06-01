@@ -28,8 +28,8 @@ class Transfer:
         self.transfer_data.add_item( src_path, dst_path,
             recursive=recursive )
 
-    def submit( self ):
-        self.transfer_client.submit_transfer( self.transfer_data )
+    def submit( self, **kwargs ):
+        self.transfer_client.submit_transfer( self.transfer_data, **kwargs )
 
 
 def get_transfer_client():

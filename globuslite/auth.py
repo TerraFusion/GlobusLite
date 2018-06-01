@@ -51,7 +51,7 @@ def get_refresh_authorizer( tokens ):
             tokens['refresh_token'], internal_auth_client(),
             tokens['access_token'], int(tokens['access_token_expires']),
             on_refresh=_update_access_tokens)
-    else
+    else:
         raise RuntimeError('No refresh token found. Please login first.')
    
     return authorizer
