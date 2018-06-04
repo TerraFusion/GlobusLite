@@ -35,13 +35,12 @@ def verify_uuid( id_name ):
         raise RuntimeError('Invalid Globus identifier.')
 
 def _update_access_tokens( token_response ):
-    tokens = token_response.by_resource_server['auth.globus.org']
-    set_auth_access_token( tokens['access_token'], 
-                           tokens['expires_at_seconds'])
+    tokens = token_response.by_resource_server['transfer.api.globus.org']
+    set_auth_access_token( tokens['access_token'], tokens['expires_at_seconds'])
 
 def get_refresh_authorizer( tokens ):
     """
-    Retrieve a refresh token authorizer from the configuration file.
+    Retrieve a refresh token authorizer from the provided tokens.
     """
 
     authorizer = None
@@ -49,7 +48,6 @@ def get_refresh_authorizer( tokens ):
     if tokens['refresh_token'] is not None:
         authorizer = RefreshTokenAuthorizer(
             tokens['refresh_token'], internal_auth_client(),
-            tokens['access_token'], int(tokens['access_token_expires']),
             on_refresh=_update_access_tokens)
     else:
         raise RuntimeError('No refresh token found. Please login first.')
