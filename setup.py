@@ -2,10 +2,10 @@ from setuptools import setup
 import os
 setup(
     name='globuslite',
-    version='0.2.2',
+    version='0.2.3',
     author='Landon T. Clipp',
     author_email='clipp2@illinois.edu',
-    packages=['globuslite'],
+    packages=['globuslite', 'globuslite.commands'],
     description='A lightweight interface to the Globus SDK.',
     long_description='globuslite provides a lightweight interface \
     to the Globus data transfer services. Normally, users must manually \
