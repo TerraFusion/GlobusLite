@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 setup(
     name='globuslite',
-    version='0.2.3',
+    version='0.2.4',
     author='Landon T. Clipp',
     author_email='clipp2@illinois.edu',
     packages=['globuslite', 'globuslite.commands'],
